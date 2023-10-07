@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.navigator {
+  margin: 5px;
+}
+.App-header {
+  padding: 10px;
+  background-color: #282c34;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.children-2 {
+  margin-right: 15px;
+  gap: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.children-1 {
+  margin-left: 20px;
+  color: #61dafb;
+}
+
+.App-footer {
+  background-color: #282c34;
+  color: white;
+  padding: 10px;
+}
+
+.App-blogPost {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: auto;
+  height: 700px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  width: 500px;
+  height: 300px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.card {
+  margin: 20px;
+}

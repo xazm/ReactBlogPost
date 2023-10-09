@@ -35,9 +35,13 @@ function Blogpost() {
     setContent("");
   };
 
-  const closeCard = (e) => {
+  const closeCard = (data, e) => {
     e.preventDefault();
+
+    const newArr = cardBlogs.filter((item) => item.tittle !== data.tittle);
+    setCardBlog(newArr);
   };
+
   return (
     <div className="App-blogPost">
       <div className="container">
@@ -80,7 +84,7 @@ function Blogpost() {
                 <p>{post.content}</p>
                 <div className="cardBtn">
                   <button>Edit</button>
-                  <button onClick={closeCard}> Close</button>
+                  <button onClick={(e) => closeCard(post, e)}> Close</button>
                 </div>
               </div>
             ))}

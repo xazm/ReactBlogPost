@@ -7,9 +7,16 @@ import Blogpost from "./components/blogpost";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Blogpost />
-      <Footer />
+      <div>
+        <Header />
+      </div>
+      <div className="blogpost">
+        <Blogpost />
+      </div>
+
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

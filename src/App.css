@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: auto;
 }
 
 .App-logo {
@@ -37,6 +38,8 @@
 }
 
 .App-footer {
+  display: flex;
+  flex-direction: column;
   background-color: #282c34;
   color: white;
   padding: 10px;
@@ -57,11 +60,48 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 10px;
   padding: 50px;
   width: 500px;
-  height: 300px;
+  height: auto;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+.submitBtn {
+  font-size: large;
+  color: white;
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  background-color: #61dafb;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+textarea {
+  width: 400px;
+  height: auto;
+}
+
+input,
+textarea {
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 0px;
+}
+
+/* Pop Up styles */
+.postCard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 .card {
-  margin: 20px;
+  margin: 40px;
+  width: 150px;
+  height: auto;
+  background-color: #61dafb;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 5px;
+  padding: 10px;
 }

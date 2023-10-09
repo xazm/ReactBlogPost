@@ -1,63 +1,5 @@
-// import React, { useState } from "react";
-
-// function Blogpost() {
-//   const [cardBlogs, setCardBlog] = useState([]);
-
-//   const [tittle, setTittle] = useState("");
-//   const [author, setAuthor] = useState("");
-//   const [date, setDate] = useState("");
-//   const [content, setContent] = useState("");
-
-//   const tittleHandler = (e) => {
-//     setTittle(e.target.value);
-//   };
-//   console.log(tittle);
-//   const authorHandler = (e) => {
-//     setAuthor(e.target.value);
-//   };
-//   const dateHandler = (e) => {
-//     setDate(e.target.value);
-//   };
-//   const contentHandler = (e) => {
-//     setContent(e.target.value);
-//   };
-
-//   // function submitCard(e) {
-//   //   e.preventDefault();
-
-//   //   // const newCardBlog = [
-//   //   //   (tittle = tittle),
-//   //   //   (author = author),
-//   //   //   (date = date),
-//   //   //   (content = content),
-//   //   // ];
-
-//   //   setCardBlog(tittle);
-//   // }
-
-//   return (
-//     <div className="App-blogPost">
-//       <div className="container">
-//         <form className="form">
-//           <label type="text">Tittle:</label>
-//           <input onChange={tittleHandler}></input>
-//           <label type="text">Author:</label>
-//           <input onChange={authorHandler}></input>
-//           <label>Date:</label>
-//           <input type="date" onChange={dateHandler}></input>
-//           <label>Content:</label>
-//           <textarea rows="10" cols="20" onChange={contentHandler}></textarea>
-//           <button onClick={submitCard}>Submit!</button>
-//           <div className="card">{cardBlogs}</div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
 // export default Blogpost;
 import React, { useState } from "react";
-import PostPopup from "./postPopup"; // Import the PostPopup component
 
 function Blogpost() {
   const [cardBlogs, setCardBlog] = useState([]);
@@ -65,7 +7,6 @@ function Blogpost() {
   const [author, setAuthor] = useState("");
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
-  const [selectedPost, setSelectedPost] = useState(null); // Track the selected post
 
   const tittleHandler = (e) => {
     setTittle(e.target.value);
@@ -94,14 +35,9 @@ function Blogpost() {
     setContent("");
   };
 
-  const openPostPopup = (post) => {
-    setSelectedPost(post);
+  const closeCard = (e) => {
+    e.preventDefault();
   };
-
-  const closePostPopup = () => {
-    setSelectedPost(null);
-  };
-
   return (
     <div className="App-blogPost">
       <div className="container">
@@ -130,29 +66,28 @@ function Blogpost() {
             value={content}
             onChange={contentHandler}
           ></textarea>
-          <button onClick={submitCard}>Submit!</button>
-          <div>
+          <button className="submitBtn" onClick={submitCard}>
+            Submit!
+          </button>
+          <div className="postCard">
             {cardBlogs.map((post, index) => (
-              <div
-                className="card"
-                key={index}
-                onClick={() => openPostPopup(post)}
-              >
-                <h3>{post.tittle}</h3>
+              <div className="card" key={index}>
+                <h2>{post.tittle}</h2>
                 <p>
-                  by: {post.author} on {post.date}
+                  by: {post.author}
+                  on {post.date}
                 </p>
                 <p>{post.content}</p>
+                <div className="cardBtn">
+                  <button>Edit</button>
+                  <button onClick={closeCard}> Close</button>
+                </div>
               </div>
             ))}
           </div>
-          {selectedPost && (
-            <PostPopup post={selectedPost} onClose={closePostPopup} />
-          )}
         </form>
       </div>
     </div>
   );
 }
-
 export default Blogpost;

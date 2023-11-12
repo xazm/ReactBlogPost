@@ -1,5 +1,6 @@
 // export default Blogpost;
 import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 function Blogpost() {
   const [cardBlogs, setCardBlog] = useState([]);
@@ -7,6 +8,7 @@ function Blogpost() {
   const [author, setAuthor] = useState("");
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
+  const [editPostId, setEditPostId] = useState(null);
 
   const tittleHandler = (e) => {
     setTittle(e.target.value);
@@ -26,8 +28,23 @@ function Blogpost() {
 
   const submitCard = (e) => {
     e.preventDefault();
-    const newPost = { tittle, author, date, content };
-    setCardBlog([...cardBlogs, newPost]);
+    // Check if the post with the same ID is being edited
+    if (editPostId !== null) {
+      // If post with the same ID is being edited, update it
+      const updatedCardBlogs = cardBlogs.map((post) =>
+        post.id === editPostId
+          ? { tittle, author, date, content, id: editPostId }
+          : post
+      );
+      setCardBlog(updatedCardBlogs);
+      // Clear the editPostId after updating
+      setEditPostId(null);
+      console.log(updatedCardBlogs);
+    } else {
+      const newPost = { tittle, author, date, content, id: uuid() };
+      setCardBlog([...cardBlogs, newPost]);
+      console.log(newPost);
+    }
     // Clear form inputs
     setTittle("");
     setAuthor("");
@@ -35,10 +52,20 @@ function Blogpost() {
     setContent("");
   };
 
+  const editCard = (data, e) => {
+    e.preventDefault();
+    // Populate form fields with the data of the selected post
+    setEditPostId(data.id);
+    setTittle(data.tittle);
+    setAuthor(data.author);
+    setDate(data.date);
+    setContent(data.content);
+    console.log(data.id);
+  };
+
   const closeCard = (data, e) => {
     e.preventDefault();
-
-    const newArr = cardBlogs.filter((item) => item.tittle !== data.tittle);
+    const newArr = cardBlogs.filter((item) => item.id !== data.id);
     setCardBlog(newArr);
   };
 
@@ -83,7 +110,7 @@ function Blogpost() {
                 </p>
                 <p>{post.content}</p>
                 <div className="cardBtn">
-                  <button>Edit</button>
+                  <button onClick={(e) => editCard(post, e)}>Edit</button>
                   <button onClick={(e) => closeCard(post, e)}> Close</button>
                 </div>
               </div>

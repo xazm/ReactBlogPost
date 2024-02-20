@@ -100,23 +100,25 @@ function Blogpost() {
           <button className="submitBtn" onClick={submitCard}>
             Submit!
           </button>
-          <div className="postCard">
-            {cardBlogs.map((post, index) => (
-              <div className="card" key={index}>
-                <h2>{post.tittle}</h2>
-                <p>
-                  by: {post.author}
-                  on {post.date}
-                </p>
-                <p>{post.content}</p>
-                <div className="cardBtn">
-                  <button onClick={(e) => editCard(post, e)}>Edit</button>
-                  <button onClick={(e) => closeCard(post, e)}> Close</button>
-                </div>
-              </div>
-            ))}
-          </div>
         </form>
+        <div className="postCard">
+          {cardBlogs.map((post, index) => (
+            <div className="card" key={index}>
+              <h2>{post.tittle}</h2>
+              <p>
+                by: {post.author}
+                on {post.date}
+              </p>
+              <p>{post.content}</p>
+              <div className="cardBtn">
+                <button onClick={(e) => editCard(post, e)}>Edit</button>
+                <button onClick={(e) => closeCard(post, e)}> Close</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* condition ...
+        ... if post card empty. render a No Post Available  */}
       </div>
     </div>
   );

@@ -13,7 +13,6 @@ function App() {
       <div className="blogpost">
         <Blogpost />
       </div>
-
       <div className="footer">
         <Footer />
       </div>

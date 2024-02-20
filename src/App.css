@@ -37,12 +37,14 @@
   color: #61dafb;
 }
 
-.App-footer {
+.footer {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   background-color: #282c34;
   color: white;
   padding: 10px;
+  display: block;
 }
 
 .App-blogPost {
